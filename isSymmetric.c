@@ -1,4 +1,4 @@
-#import "main.c"
+#include "board.h"
 
 const int symmetryMap[][] = {{3, 6, 9, 2, 5, 8, 1, 4, 7},
                              {9, 8, 7, 6, 5, 4, 3, 2, 1},
@@ -14,7 +14,7 @@ int isSymmetric(board currentBoard, board *canonicalBoards, int canonicalSize)
         for(y = 0; y < 9; y++) {
             isSymmetric = 1;
             for (z = 0; z < 6; z++)
-                if (currentBoard.board[symmetryMap[y][z]] != canonicalBoards->board[symmetryMap[y][z]])
+                if (currentBoard.pieces[symmetryMap[y][z]] != canonicalBoards->pieces[symmetryMap[y][z]])
                     isSymmetric = 0;
             if (isSymmetric == 1)
                 return isSymmetric;

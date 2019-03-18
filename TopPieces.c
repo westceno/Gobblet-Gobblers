@@ -1,4 +1,4 @@
-#import "main.c"
+#include "board.h"
 #define SIZE 12
 
 board TopPieces(board currentBoard)
@@ -8,10 +8,10 @@ board TopPieces(board currentBoard)
     board tops = currentBoard;
     int *xIterator;
 
-    xIterator = currentBoard.board;
+    xIterator = currentBoard.pieces;
 
     for(x = 0; x < SIZE; x++) {
-        tops.board[x] = 0;
+        tops.pieces[x] = 0;
     }
     printf("%d", *xIterator);
     for(x = 0; x < SIZE; x++) {
@@ -26,7 +26,7 @@ board TopPieces(board currentBoard)
             }
             yIterator = yIterator + 1;
         }
-        tops.board[greatestLocation] = greatestPiece;
+        tops.pieces[greatestLocation] = greatestPiece;
         xIterator++;
     }
 
