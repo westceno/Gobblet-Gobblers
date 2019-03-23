@@ -6,7 +6,7 @@ typedef struct board {
     the first two being player one, and the 3rd and 4th being player 2
     this repeats for medium and large pieces
     */
-    int pieces[11]; 
+    int pieces[12];
     char playerTurn; //can be x or o
     int result; //win, lose, tie
 } board;
