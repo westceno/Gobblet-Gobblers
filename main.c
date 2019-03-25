@@ -12,8 +12,30 @@ TODO: determine a size so we don't have to dynamically allocate space
 board canonicalBoards[11];
 
 void main() {
-    printf("test\n");
+    int i, j;
     board currentBoard;
-    LegalMoves(currentBoard);
+    board candidates[60];
+
+    
+    for (i = 0; i < SIZE; i++) { currentBoard.pieces[i] = 0; }
+    currentBoard.pieces[0] = 1;
+    currentBoard.pieces[1] = 2;
+    currentBoard.pieces[4] = 4;
+    currentBoard.pieces[2] = 8;
+    currentBoard.pieces[11] = 2;
+    currentBoard.pieces[10] = 5;
+    for (i = 0; i < 60; i++) { for (j = 0; j < SIZE; j++ ) { candidates[i].pieces[j] = 0; }}
+    currentBoard.playerTurn = 0;
+    // PrintBoard(currentBoard);
+
+    LegalMoves(currentBoard, candidates);
+    // LegalMoves(candidates[0], candidates);
+    printf("%c\n", IsWinner(currentBoard));
+
+    for (i = 0; i < 60; i++) {
+        // printf("\n%d: ", i);
+        // PrintBoard(candidates[i]);
+    }
     return;
 }
+

@@ -1,5 +1,5 @@
+#pragma once
 #include "board.h"
-#define SIZE 12
 
 board TopPieces(board currentBoard)
 {
@@ -13,7 +13,7 @@ board TopPieces(board currentBoard)
     for(x = 0; x < SIZE; x++) {
         tops.pieces[x] = 0;
     }
-    printf("%d", *xIterator);
+    // printf("%d", *xIterator);
     for(x = 0; x < SIZE; x++) {
         greatestPiece = *xIterator;
         greatestLocation = x;
