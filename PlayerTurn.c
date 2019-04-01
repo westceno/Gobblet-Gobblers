@@ -1,8 +1,5 @@
 #include "main.h"
-#include "isSymmetric.c"
-#include "IsWinner.c"
-#include "LegalMoves.c"
-#include "TopPieces.c"
+
 
 int Player_Turn(board currentBoard)
 {
