@@ -44,6 +44,7 @@ void LegalMoves(board currentBoard, board* candidates, int* totalMoves) {
             // I would like to use top pieces for this purpose. I think top pieces needs to be made to return a 9 element int arrayidea
 
             //Loop through topPieces 9 times to see whats in each spot
+            //TODO we want the divided by 4
             for (k = 1; k <= 9; k++) {
                 for (l = 0; l < SIZE; l++) {
                     boardPieceSize = l % 3;

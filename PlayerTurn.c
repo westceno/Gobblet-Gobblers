@@ -15,8 +15,6 @@ int Player_Turn(board currentBoard)
     else if(IsWinner(currentBoard) == 'O' && currentBoard.playerTurn == 2)
         return 2;
 
-    //TODO We need to get a size from legal moves so lets pass
-    // in a pointer to a size count also legal moves should change turn counter
     LegalMoves(currentBoard, legalMoves, &totalMoves);
 
     for( x = 0; x < totalMoves; x++){

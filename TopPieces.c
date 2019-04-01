@@ -13,6 +13,7 @@ board TopPieces(board currentBoard)
     for(x = 0; x < SIZE; x++) {
         tops.pieces[x] = 0;
     }
+
     // printf("%d", *xIterator);
     for(x = 0; x < SIZE; x++) {
         greatestPiece = *xIterator;

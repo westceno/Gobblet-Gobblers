@@ -3,7 +3,6 @@
 
 int symmetryMap[9][9] = {{1, 2, 3, 4, 5, 6, 7, 8, 9},
                          {7, 8, 9, 4, 5, 6, 1, 2, 3},
-                         {8, 8, 9, 4, 5, 6, 1, 2, 3},
                          {3, 6, 9, 2, 5, 8, 1, 4, 7},
                          {9, 8, 7, 6, 5, 4, 3, 2, 1},
                          {7, 4, 1, 8, 5, 2, 9, 6, 3},
@@ -17,7 +16,7 @@ board isSymmetric(board currentBoard, board *canonicalBoards, int canonicalSize)
     board symmetric;
     symmetric.result = -1;
     for(x = 0; x < canonicalSize; x++){
-        for(y = 0; y < 9 && canonicalBoards->playerTurn == currentBoard.playerTurn; y++){
+        for(y = 0; y < 8 && canonicalBoards->playerTurn == currentBoard.playerTurn; y++){
             isSymmetric = 1;
             for(z = 0; z < 12; z += 2) {
                 if (currentBoard.pieces[z] > 0 && currentBoard.pieces[z + 1] > 0) {
