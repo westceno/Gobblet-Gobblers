@@ -8,7 +8,7 @@ int Player_Turn(board currentBoard)
 
     board symmetricBoard;
 
-    int totalMoves = 0, canonicalSize = 0, xWinnerCounter = 0, oWinnerCounter = 0, x, winner;
+    int totalMoves = 0, canonicalSize = 0, xWinnerCounter = 0, oWinnerCounter = 0, i, winner;
 
     if(IsWinner(currentBoard) == 'x' && currentBoard.playerTurn == 0)
         return 1;
