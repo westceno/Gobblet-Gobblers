@@ -1,10 +1,11 @@
 #include "main.h"
 
+board canonicalBoards[2000000];
 
 int Player_Turn(board currentBoard)
 {
-    board legalMoves[1000];
-    board canonicalBoards[10000];
+    board legalMoves[531441];
+
     board symmetricBoard;
 
     int totalMoves = 0, canonicalSize = 0, xWinnerCounter = 0, oWinnerCounter = 0, x, winner;
@@ -22,6 +23,7 @@ int Player_Turn(board currentBoard)
         symmetricBoard = isSymmetric(legalMoves[x], canonicalBoards, canonicalSize);
         if( symmetricBoard.result == -1){
             canonicalBoards[canonicalSize] = legalMoves[x];
+            canonicalSize++;
             winner = Player_Turn(legalMoves[x]);
         }
         else if (symmetricBoard.result != -1) {
