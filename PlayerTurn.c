@@ -12,7 +12,7 @@ int Player_Turn(board currentBoard)
 
     if(IsWinner(currentBoard) == 'x' && currentBoard.playerTurn == 0)
         return 1;
-    else if(IsWinner(currentBoard) == '0' && currentBoard.playerTurn == 2)
+    else if(IsWinner(currentBoard) == 'O' && currentBoard.playerTurn == 2)
         return 2;
 
     //TODO We need to get a size from legal moves so lets pass
