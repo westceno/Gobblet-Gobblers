@@ -15,5 +15,5 @@ typedef struct board {
     */
     int pieces[SIZE];
     int playerTurn; //can be x (0) or o (2)
-    int result; //win, lose, tie
+    int result; //win(2), lose(1), tie(0), empty(-1)
 } board;

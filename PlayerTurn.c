@@ -16,15 +16,15 @@ int Player_Turn(board currentBoard)
 
     //TODO We need to get a size from legal moves so lets pass
     // in a pointer to a size count also legal moves should change turn counter
-    legalMoves = LegalMoves(currentBoard, legalMoves, &totalMoves);
+    LegalMoves(currentBoard, legalMoves, &totalMoves);
 
     for( x = 0; x < totalMoves; x++){
         symmetricBoard = isSymmetric(legalMoves[x], canonicalBoards, canonicalSize);
-        if( symmetricBoard == NULL){
+        if( symmetricBoard.result == -1){
             canonicalBoards[canonicalSize] = legalMoves[x];
             winner = Player_Turn(legalMoves[x]);
         }
-        else if (symmetricBoard.result != NULL) {
+        else if (symmetricBoard.result != -1) {
             winner = symmetricBoard.result;
         }
 

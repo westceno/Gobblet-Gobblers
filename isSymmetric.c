@@ -1,3 +1,4 @@
+#pragma once
 #include "board.h"
 
 int symmetryMap[9][9] = {{1, 2, 3, 4, 5, 6, 7, 8, 9},
@@ -13,7 +14,8 @@ int symmetryMap[9][9] = {{1, 2, 3, 4, 5, 6, 7, 8, 9},
 board isSymmetric(board currentBoard, board *canonicalBoards, int canonicalSize)
 {
     int x, y, z, isSymmetric;
-    board symmetric = NULL;
+    board symmetric;
+    symmetric.result = -1;
     for(x = 0; x < canonicalSize; x++){
         for(y = 0; y < 9 && canonicalBoards->playerTurn == currentBoard.playerTurn; y++){
             isSymmetric = 1;

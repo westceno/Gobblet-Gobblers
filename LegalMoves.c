@@ -1,10 +1,10 @@
 #include "board.h"
 #include "TopPieces.c"
 
-board* LegalMoves(board currentBoard, board* candidates) {
+void LegalMoves(board currentBoard, board* candidates, int* totalMoves) {
 
     int i, j, k, l; //loop increment
-    int c = 0; //count of candidate boards we've made
+    int c; //count of candidate boards we've made
     int empty = 0; //flag to set if we've found an empty spot
     int handPieceSize;
     int boardPieceSize;
@@ -57,7 +57,6 @@ board* LegalMoves(board currentBoard, board* candidates) {
                             temp = currentBoard;
                             temp.pieces[j] = k;
                             candidates[c++] = temp;
-
                             break;
                         }
                     }
@@ -75,5 +74,6 @@ board* LegalMoves(board currentBoard, board* candidates) {
     }
 
     //return the legalMoves array
-    return candidates;
+    *totalMoves = c;
+    return;
 }

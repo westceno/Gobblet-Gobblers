@@ -22,7 +22,7 @@ char IsWinner(board currentBoard) {
     
     //Put 'x' in pos array
 
-    for (k = 1; k <= 9; k++) {
+    for (k = 1; k <= BOARD_SIZE; k++) {
         // printf("%d", k);
         for (i = P1; i < SIZE; i += 4) {
             for (j = i; j <= i+1; j++) {
@@ -39,7 +39,7 @@ char IsWinner(board currentBoard) {
 
     //Put 'o' in pos array
     empty = 0;
-    for (k = 1; k <= 9; k++) {
+    for (k = 1; k <= BOARD_SIZE; k++) {
         // printf("%d", k);
         if (pos[k-1] != 'x') {
             for (i = P2; i < SIZE; i += 4) {
@@ -58,7 +58,7 @@ char IsWinner(board currentBoard) {
 
     //print out the pos board (debug)
 
-    for (i = 0; i < 9; i++) {
+    for (i = 0; i < BOARD_SIZE; i++) {
         if (i % 3 == 0 && i != 0) { printf("\n");}
         printf("%c", pos[i]);
     }
@@ -67,14 +67,14 @@ char IsWinner(board currentBoard) {
     //check for winner
 
     //check rows 
-    for (i = 0; i < 9; i += 3) {
+    for (i = 0; i < BOARD_SIZE; i += 3) {
         if (findWinner(pos[i], pos[i+1], pos[i+2]) == 1) {
             return pos[i];
         }
     }
 
     //check columns 
-    for (i = 0; i < 9; i++) {
+    for (i = 0; i < BOARD_SIZE; i++) {
         if (findWinner(pos[i], pos[i+3], pos[i+6]) == 1) {
             return pos[i];
         }
