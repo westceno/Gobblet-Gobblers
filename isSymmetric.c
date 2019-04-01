@@ -15,7 +15,7 @@ board isSymmetric(board currentBoard, board *canonicalBoards, int canonicalSize)
     int x, y, z, isSymmetric;
     board symmetric;
     for(x = 0; x < canonicalSize; x++){
-        for(y = 0; y < 9; y++){
+        for(y = 0; y < 9 && canonicalBoards->playerTurn == currentBoard.playerTurn; y++){
             isSymmetric = 1;
             for(z = 0; z < 12; z += 2) {
                 if (currentBoard.pieces[z] > 0 && currentBoard.pieces[z + 1] > 0) {
