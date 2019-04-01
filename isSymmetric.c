@@ -1,19 +1,19 @@
 #include "board.h"
 
 int symmetryMap[9][9] = {{1, 2, 3, 4, 5, 6, 7, 8, 9},
-                             {7, 8, 9, 4, 5, 6, 1, 2, 3},
-                             {8, 8, 9, 4, 5, 6, 1, 2, 3},
-                             {3, 6, 9, 2, 5, 8, 1, 4, 7},
-                             {9, 8, 7, 6, 5, 4, 3, 2, 1},
-                             {7, 4, 1, 8, 5, 2, 9, 6, 3},
-                             {9, 6, 3, 8, 5, 2, 7, 4, 1},
-                             {3, 2, 1, 6, 5, 4, 9, 8, 7},
-                             {1, 4, 7, 2, 5, 8, 3, 6, 9}};
+                         {7, 8, 9, 4, 5, 6, 1, 2, 3},
+                         {8, 8, 9, 4, 5, 6, 1, 2, 3},
+                         {3, 6, 9, 2, 5, 8, 1, 4, 7},
+                         {9, 8, 7, 6, 5, 4, 3, 2, 1},
+                         {7, 4, 1, 8, 5, 2, 9, 6, 3},
+                         {9, 6, 3, 8, 5, 2, 7, 4, 1},
+                         {3, 2, 1, 6, 5, 4, 9, 8, 7},
+                         {1, 4, 7, 2, 5, 8, 3, 6, 9}};
 
 board isSymmetric(board currentBoard, board *canonicalBoards, int canonicalSize)
 {
     int x, y, z, isSymmetric;
-    board symmetric;
+    board symmetric = NULL;
     for(x = 0; x < canonicalSize; x++){
         for(y = 0; y < 9 && canonicalBoards->playerTurn == currentBoard.playerTurn; y++){
             isSymmetric = 1;

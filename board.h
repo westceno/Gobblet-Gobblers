@@ -2,6 +2,7 @@
 
 #define SIZE 12
 #define BOARD_SIZE 9 //3x3
+//TODO I think we should use 1 instead of 2
 #define P1 0
 #define P2 2
 
