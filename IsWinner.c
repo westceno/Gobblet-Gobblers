@@ -17,8 +17,8 @@ char IsWinner(board currentBoard) {
 
     board topPieces = TopPieces(currentBoard);
 
-    PrintBoard(currentBoard);
-    PrintBoard(topPieces);
+    // PrintBoard(currentBoard);
+    // PrintBoard(topPieces);
     
     //Put 'x' in pos array
 
@@ -58,11 +58,11 @@ char IsWinner(board currentBoard) {
 
     //print out the pos board (debug)
 
-    for (i = 0; i < BOARD_SIZE; i++) {
-        if (i % 3 == 0 && i != 0) { printf("\n");}
-        printf("%c", pos[i]);
-    }
-    printf("\n");
+    // for (i = 0; i < BOARD_SIZE; i++) {
+    //     if (i % 3 == 0 && i != 0) { printf("\n");}
+    //     printf("%c", pos[i]);
+    // }
+    // printf("\n");
 
     //check for winner
 

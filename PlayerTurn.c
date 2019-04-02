@@ -17,12 +17,12 @@ int Player_Turn(board currentBoard)
 
     LegalMoves(currentBoard, legalMoves, &totalMoves);
 
-    for( x = 0; x < totalMoves; x++){
-        symmetricBoard = isSymmetric(legalMoves[x], canonicalBoards, canonicalSize);
+    for( i = 0; i < totalMoves; i++){
+        symmetricBoard = isSymmetric(legalMoves[i], canonicalBoards, canonicalSize);
         if( symmetricBoard.result == -1){
-            canonicalBoards[canonicalSize] = legalMoves[x];
+            canonicalBoards[canonicalSize] = legalMoves[i];
             canonicalSize++;
-            winner = Player_Turn(legalMoves[x]);
+            winner = Player_Turn(legalMoves[i]);
         }
         else if (symmetricBoard.result != -1) {
             winner = symmetricBoard.result;

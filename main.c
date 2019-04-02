@@ -9,28 +9,33 @@
 canonicalBoards is an array of boards that we use to store boards that we've already visited
 TODO: determine a size so we don't have to dynamically allocate space
 */
-board canonicalBoards[11];
 
 void main() {
     int i, j;
+    int totalMoves;
     int candidateSize = 60;
+    int result;
     board currentBoard;
     board candidates[candidateSize];
    
     for (i = 0; i < SIZE; i++) { currentBoard.pieces[i] = 0; }
 
-    Player_Turn(currentBoard);
+    // result = Player_Turn(currentBoard);
+    // printf("Result of currentBoard: %d\n", result); 
+
+    
+
     // currentBoard.pieces[0] = 1;
     // currentBoard.pieces[1] = 2;
     // currentBoard.pieces[4] = 4;
     // currentBoard.pieces[2] = 8;
     // currentBoard.pieces[11] = 2;
     // currentBoard.pieces[10] = 5;
-    // for (i = 0; i < 60; i++) { for (j = 0; j < SIZE; j++ ) { candidates[i].pieces[j] = 0; }}
+    for (i = 0; i < 60; i++) { for (j = 0; j < SIZE; j++ ) { candidates[i].pieces[j] = 0; }}
     // currentBoard.playerTurn = 0;    
     // // PrintBoard(currentBoard);
 
-    // LegalMoves(currentBoard, candidates, 60);
+    LegalMoves(currentBoard, candidates, &totalMoves);
     // // LegalMoves(candidates[0], candidates);
     // printf("%c\n", IsWinner(currentBoard));
 

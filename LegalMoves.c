@@ -16,38 +16,24 @@ void LegalMoves(board currentBoard, board* candidates, int* totalMoves) {
 
     //Grab spare pieces. With those spare pieces, see if you can find a piece that has a 'height' greater our space.
     //So if we have a large piece we can place that over any piece other than another large one
-    // i += 4 ensures that we're only looking at the current players pieces
+    //i += 4 ensures that we're only looking at the current players pieces
     //0, 1, 4, 5, 8, 9 player 1
     //2, 3, 6, 7, 10, 11 player 2
-    int currentPlayer = 0;
 
     for (i = 0; i < 60; i++) { for (j = 0; j < SIZE; j++ ) { candidates[i].pieces[j] = 0; }}
 
-    for (i = currentPlayer; i < SIZE; i += 4) {
-            // printf("c %d\n", c);
-            // printf("i: %d\n", i);
-            if (currentPlayer == 0) {
-                handPieceSize = i % 3;
-            } else if (currentPlayer == 2) {
-                handPieceSize = (i - 2) % 3;
-            }
-            // printf("size: %d\n", handPieceSize);
+    for (i = 0; i < SIZE; i += 4) {
         for (j = i; j <= i + 1; j++){
-            
-            // printf("j: %d\n", j);   
-            // printf("valueJ: %d\n", currentBoard.pieces[j]); 
-
-            handPieceSize = j % 3;
+            handPieceSize = j / 4;
 
             // We've found a spare piece at pieces[i], now we must go through each position on the board (1-9)
             // and see if we can find a where we can move our spare to.
             // I would like to use top pieces for this purpose. I think top pieces needs to be made to return a 9 element int arrayidea
 
             //Loop through topPieces 9 times to see whats in each spot
-            //TODO we want the divided by 4
             for (k = 1; k <= 9; k++) {
                 for (l = 0; l < SIZE; l++) {
-                    boardPieceSize = l % 3;
+                    boardPieceSize = l / 4;
                     //if we've found a piece that is in position k on the top piece board, then the largest piece
                     //in position k is boardPieceSize
                     if (topPieces.pieces[l] == k) {
