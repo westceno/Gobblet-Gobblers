@@ -1,12 +1,17 @@
 #include "main.h"
+#include "stdlib.h"
+
 
 board canonicalBoards[2000000];
+board legalMoves[531441];
 
 int Player_Turn(board currentBoard)
 {
-    board legalMoves[531441];
+
+    malloc(sizeof(legalMoves) * 2);
 
     board symmetricBoard;
+
 
     int totalMoves = 0, canonicalSize = 0, xWinnerCounter = 0, oWinnerCounter = 0, i, winner;
 

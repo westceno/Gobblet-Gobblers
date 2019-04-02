@@ -17,12 +17,15 @@ void main() {
     int result;
     board currentBoard;
     board candidates[candidateSize];
-   
+    malloc(sizeof(canonicalBoards) * 2);
+
     for (i = 0; i < SIZE; i++) { currentBoard.pieces[i] = 0; }
+    currentBoard.playerTurn = 'x';
 
     result = Player_Turn(currentBoard);
     printf("Result of currentBoard: %d\n", result); 
 
+    calloc(sizeof(canonicalBoards), 2);
     
 
     // currentBoard.pieces[0] = 1;
