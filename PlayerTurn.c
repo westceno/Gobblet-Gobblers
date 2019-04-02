@@ -10,9 +10,9 @@ int Player_Turn(board currentBoard)
 
     int totalMoves = 0, canonicalSize = 0, xWinnerCounter = 0, oWinnerCounter = 0, i, winner;
 
-    if(IsWinner(currentBoard) == 'x' && currentBoard.playerTurn == 0)
+    if(IsWinner(currentBoard) == 'x' && currentBoard.playerTurn == 'x')
         return 1;
-    else if(IsWinner(currentBoard) == 'O' && currentBoard.playerTurn == 2)
+    else if(IsWinner(currentBoard) == 'o' && currentBoard.playerTurn == 'o')
         return 2;
 
     LegalMoves(currentBoard, legalMoves, &totalMoves);
@@ -34,13 +34,13 @@ int Player_Turn(board currentBoard)
             oWinnerCounter++;
     }
 
-    if(currentBoard.playerTurn == 0 && xWinnerCounter >= 1)
+    if(currentBoard.playerTurn == 'x' && xWinnerCounter >= 1)
         return 1;
-    else if(currentBoard.playerTurn == 0 && totalMoves == oWinnerCounter)
+    else if(currentBoard.playerTurn == 'x' && totalMoves == oWinnerCounter)
         return 2;
-    else if(currentBoard.playerTurn == 2 && oWinnerCounter >= 1)
+    else if(currentBoard.playerTurn == 'o' && oWinnerCounter >= 1)
         return 2;
-    else if(currentBoard.playerTurn == 2 && totalMoves == xWinnerCounter)
+    else if(currentBoard.playerTurn == 'o' && totalMoves == xWinnerCounter)
         return 1;
     else
         return 0;
