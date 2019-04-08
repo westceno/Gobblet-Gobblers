@@ -22,7 +22,7 @@ void main() {
     for (i = 0; i < SIZE; i++) { currentBoard.pieces[i] = 0; }
     printf("a\n");
     currentBoard.playerTurn = 'x';
-    currentBoard.result = -1;
+    currentBoard.result = -2;
     result = Player_Turn(currentBoard);
     printf("Result of currentBoard: %d\n", result); 
 
