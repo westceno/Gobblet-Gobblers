@@ -16,11 +16,13 @@ int Player_Turn(board currentBoard)
     int totalMoves = 0, xWinnerCounter = 0, oWinnerCounter = 0;
     int i, winner;
 
-    if(IsWinner(currentBoard) == 'x' && currentBoard.playerTurn == 'x')
-        return 1;
-    else if(IsWinner(currentBoard) == 'o' && currentBoard.playerTurn == 'o')
-        return 2;
-
+    if(IsWinner(currentBoard) == 'x' && currentBoard.playerTurn == 'x') {
+        currentBoard.result = 1;
+        return currentBoard.result;
+    } else if(IsWinner(currentBoard) == 'o' && currentBoard.playerTurn == 'o') {
+        currentBoard.result = 2;
+        return currentBoard.result;
+    }
     LegalMoves(currentBoard, legalMoves, &totalMoves);
 
     for( i = 0; i < totalMoves; i++){
@@ -41,16 +43,21 @@ int Player_Turn(board currentBoard)
     }
 
     // printf("Canonical Size: %d\n", canonicalSize);
-    if(currentBoard.playerTurn == 'x' && xWinnerCounter >= 1)
+    if(currentBoard.playerTurn == 'x' && xWinnerCounter >= 1) {
+        currentBoard.result = 1;
         return 1;
-    else if(currentBoard.playerTurn == 'x' && totalMoves == oWinnerCounter)
+    } else if(currentBoard.playerTurn == 'x' && totalMoves == oWinnerCounter) {
+        currentBoard.result = 2;
         return 2;
-    else if(currentBoard.playerTurn == 'o' && oWinnerCounter >= 1)
+    } else if(currentBoard.playerTurn == 'o' && oWinnerCounter >= 1) {
+        currentBoard.result = 2;
         return 2;
-    else if(currentBoard.playerTurn == 'o' && totalMoves == xWinnerCounter)
+    } else if(currentBoard.playerTurn == 'o' && totalMoves == xWinnerCounter) {
+        currentBoard.result = 1;
         return 1;
-    else
+    } else {
+        currentBoard.result = 0;
         return 0;
-
+    }
 
 }
