@@ -43,7 +43,6 @@ void LegalMoves(board currentBoard, board *candidates, int* totalMoves) {
 
             // We've found a spare piece at pieces[i], now we must go through each position on the board (1-9)
             // and see if we can find a where we can move our spare to.
-            // I would like to use top pieces for this purpose. I think top pieces needs to be made to return a 9 element int arrayidea
 
             //Loop through topPieces 9 times to see whats in each spot
             for (k = 1; k <= 9; k++) {
