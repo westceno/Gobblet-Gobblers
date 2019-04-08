@@ -4,7 +4,7 @@
 void LegalMoves(board currentBoard, board* candidates, int* totalMoves) {
 
     int i, j, k, l; //loop increment
-    int c; //count of candidate boards we've made
+    int c = 0; //count of candidate boards we've made
     int empty = 0; //flag to set if we've found an empty spot
     int handPieceSize;
     int boardPieceSize;
@@ -20,7 +20,7 @@ void LegalMoves(board currentBoard, board* candidates, int* totalMoves) {
     //0, 1, 4, 5, 8, 9 player 1
     //2, 3, 6, 7, 10, 11 player 2
 
-    for (i = 0; i < 60; i++) { for (j = 0; j < SIZE; j++ ) { candidates[i].pieces[j] = 0; }}
+    for (i = 0; i < 80; i++) { for (j = 0; j < SIZE; j++ ) { candidates[i].pieces[j] = 0; }}
 
     for (i = 0; i < SIZE; i += 4) {
         for (j = i; j <= i + 1; j++){

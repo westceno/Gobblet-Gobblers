@@ -5,6 +5,8 @@
 board canonicalBoards[2000000];
 board legalMoves[531441];
 
+int canonicalSize = 0;
+
 int Player_Turn(board currentBoard)
 {
 
@@ -12,8 +14,8 @@ int Player_Turn(board currentBoard)
 
     board symmetricBoard;
 
-
-    int totalMoves = 0, canonicalSize = 0, xWinnerCounter = 0, oWinnerCounter = 0, i, winner;
+    int totalMoves = 0, xWinnerCounter = 0, oWinnerCounter = 0;
+    int i, winner;
 
     if(IsWinner(currentBoard) == 'x' && currentBoard.playerTurn == 'x')
         return 1;
@@ -25,6 +27,7 @@ int Player_Turn(board currentBoard)
     for( i = 0; i < totalMoves; i++){
         symmetricBoard = isSymmetric(legalMoves[i], canonicalBoards, canonicalSize);
         if( symmetricBoard.result == -1){
+            // printf("c");
             canonicalBoards[canonicalSize] = legalMoves[i];
             canonicalSize++;
             winner = Player_Turn(legalMoves[i]);
@@ -39,6 +42,7 @@ int Player_Turn(board currentBoard)
             oWinnerCounter++;
     }
 
+    printf("Canonical Size: %d\n", canonicalSize);
     if(currentBoard.playerTurn == 'x' && xWinnerCounter >= 1)
         return 1;
     else if(currentBoard.playerTurn == 'x' && totalMoves == oWinnerCounter)

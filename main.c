@@ -20,8 +20,8 @@ void main() {
     malloc(sizeof(canonicalBoards) * 2);
 
     for (i = 0; i < SIZE; i++) { currentBoard.pieces[i] = 0; }
-    currentBoard.playerTurn = 'x';
-
+    printf("a\n");
+    currentBoard.playerTurn = 'x';    
     result = Player_Turn(currentBoard);
     printf("Result of currentBoard: %d\n", result); 
 
@@ -35,7 +35,6 @@ void main() {
     // currentBoard.pieces[11] = 2;
     // currentBoard.pieces[10] = 5;
     // for (i = 0; i < 60; i++) { for (j = 0; j < SIZE; j++ ) { candidates[i].pieces[j] = 0; }}
-    // currentBoard.playerTurn = 'x';    
     // PrintBoard(currentBoard);
 
     // LegalMoves(currentBoard, candidates, &totalMoves);
