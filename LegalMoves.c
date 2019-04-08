@@ -43,6 +43,7 @@ void LegalMoves(board currentBoard, board* candidates, int* totalMoves) {
                             empty = 1; 
                             temp = currentBoard;
                             temp.pieces[j] = k;
+                            temp.result = -1;
                             candidates[c++] = temp;
                             break;
                         }
@@ -52,6 +53,7 @@ void LegalMoves(board currentBoard, board* candidates, int* totalMoves) {
                 if (empty == 0) {
                     temp = currentBoard; 
                     temp.pieces[j] = k;
+                    temp.result = -1;
                     candidates[c++] = temp;
                 } else {empty = 0;}
 
