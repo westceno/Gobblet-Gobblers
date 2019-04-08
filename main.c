@@ -13,7 +13,7 @@ TODO: determine a size so we don't have to dynamically allocate space
 void main() {
     int i, j;
     int totalMoves;
-    int candidateSize = 60;
+    int candidateSize = 80;
     int result;
     board currentBoard;
     board candidates[candidateSize];

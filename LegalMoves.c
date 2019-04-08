@@ -1,6 +1,14 @@
 #include "board.h"
 #include "TopPieces.c"
 
+char switchPlayer(char currentPlayer) {
+    if (currentPlayer == 'x') {
+        return 'o';
+    } else {
+        return 'x';
+    }
+}
+
 void LegalMoves(board currentBoard, board* candidates, int* totalMoves) {
 
     int i, j, k, l; //loop increment
@@ -21,8 +29,14 @@ void LegalMoves(board currentBoard, board* candidates, int* totalMoves) {
     //2, 3, 6, 7, 10, 11 player 2
 
     for (i = 0; i < 80; i++) { for (j = 0; j < SIZE; j++ ) { candidates[i].pieces[j] = 0; }}
+    
+    if (currentBoard.playerTurn == 'x') {
+        i = 0;
+    } else if (currentBoard.playerTurn == 'o') {
+        i = 2;
+    }
 
-    for (i = 0; i < SIZE; i += 4) {
+    for (i; i < SIZE; i += 4) {
         for (j = i; j <= i + 1; j++){
             handPieceSize = j / 4;
 
@@ -44,6 +58,7 @@ void LegalMoves(board currentBoard, board* candidates, int* totalMoves) {
                             temp = currentBoard;
                             temp.pieces[j] = k;
                             temp.result = -2;
+                            temp.playerTurn = switchPlayer(temp.playerTurn);
                             candidates[c++] = temp;
                             break;
                         }
@@ -54,6 +69,7 @@ void LegalMoves(board currentBoard, board* candidates, int* totalMoves) {
                     temp = currentBoard; 
                     temp.pieces[j] = k;
                     temp.result = -2;
+                    temp.playerTurn = switchPlayer(temp.playerTurn);
                     candidates[c++] = temp;
                 } else {empty = 0;}
 
