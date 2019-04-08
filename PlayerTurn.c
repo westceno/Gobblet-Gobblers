@@ -2,7 +2,7 @@
 #include "stdlib.h"
 
 
-board canonicalBoards[2000000];
+board *canonicalBoards[2000000];
 board legalMoves[531441];
 
 int canonicalSize = 0;
@@ -26,7 +26,7 @@ int Player_Turn(board currentBoard)
     for( i = 0; i < totalMoves; i++){
         symmetricBoard = isSymmetric(legalMoves[i], canonicalBoards, canonicalSize);
         if( symmetricBoard.result == -1){
-            canonicalBoards[canonicalSize] = legalMoves[i];
+            canonicalBoards[canonicalSize] = &legalMoves[i];
             canonicalSize++;
             winner = Player_Turn(legalMoves[i]);
         }

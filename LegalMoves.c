@@ -9,8 +9,9 @@ char switchPlayer(char currentPlayer) {
     }
 }
 
-void LegalMoves(board currentBoard, board* candidates, int* totalMoves) {
+void LegalMoves(board currentBoard, board *candidates, int* totalMoves) {
 
+    int x, y;
     int i, j, k, l; //loop increment
     int c = 0; //count of candidate boards we've made
     int empty = 0; //flag to set if we've found an empty spot
@@ -77,6 +78,7 @@ void LegalMoves(board currentBoard, board* candidates, int* totalMoves) {
         }
 
     }
+
 
     //return the legalMoves array
     *totalMoves = c;
