@@ -43,7 +43,7 @@ int Player_Turn(board currentBoard)
             oWinnerCounter++;
     }
 
-    printf("Canonical Size: %d\n", canonicalSize);
+   //printf("Canonical Size: %d\n", canonicalSize);
     if(currentBoard.playerTurn == 'x' && xWinnerCounter >= 1) {
         canonicalBoards[findBoard(currentBoard, canonicalBoards, canonicalSize)].result = 1;
         return 1;
