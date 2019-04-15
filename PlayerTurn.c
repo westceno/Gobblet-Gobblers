@@ -14,7 +14,7 @@ int Player_Turn(board currentBoard)
 
     board symmetricBoard;
 
-    int totalMoves = 0, xWinnerCounter = 0, oWinnerCounter = 0;
+    int totalMoves = 0, xWinnerCounter = 0, oWinnerCounter = 0, cycleCounter = 0;
     int i, winner;
 
     if(IsWinner(currentBoard) == 'x' && currentBoard.playerTurn == 'x') {
@@ -41,19 +41,22 @@ int Player_Turn(board currentBoard)
             xWinnerCounter++;
         else if(winner == 2)
             oWinnerCounter++;
+        else
+            cycleCounter++;
     }
 
    //printf("Canonical Size: %d\n", canonicalSize);
+   printf("x = %d y = %d\n", xWinnerCounter,oWinnerCounter);
     if(currentBoard.playerTurn == 'x' && xWinnerCounter >= 1) {
         canonicalBoards[findBoard(currentBoard, canonicalBoards, canonicalSize)].result = 1;
         return 1;
-    } else if(currentBoard.playerTurn == 'x' && totalMoves == oWinnerCounter) {
+    } else if(currentBoard.playerTurn == 'x' && totalMoves == oWinnerCounter + cycleCounter) {
         canonicalBoards[findBoard(currentBoard, canonicalBoards, canonicalSize)].result = 2;
         return 2;
     } else if(currentBoard.playerTurn == 'o' && oWinnerCounter >= 1) {
         canonicalBoards[findBoard(currentBoard, canonicalBoards, canonicalSize)].result = 2;
         return 2;
-    } else if(currentBoard.playerTurn == 'o' && totalMoves == xWinnerCounter) {
+    } else if(currentBoard.playerTurn == 'o' && totalMoves == xWinnerCounter + cycleCounter) {
         canonicalBoards[findBoard(currentBoard, canonicalBoards, canonicalSize)].result = 1;
         return 1;
     } else {
