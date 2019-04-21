@@ -21,7 +21,7 @@ board isSymmetric(board currentBoard, board *canonicalBoards, int canonicalSize)
             for(z = 0; z < 12; z += 2) {
                 if (currentBoard.pieces[z] > 0 && currentBoard.pieces[z + 1] > 0) {
                     if (!(symmetryMap[y][currentBoard.pieces[z] - 1] == canonicalBoards->pieces[z] ||
-                          symmetryMap[y][currentBoard.pieces[z] - 1] == canonicalBoards->pieces[z + 1]) &&
+                          symmetryMap[y][currentBoard.pieces[z] - 1] == canonicalBoards->pieces[z + 1]) ||
                         !(symmetryMap[y][currentBoard.pieces[z + 1] - 1] == canonicalBoards->pieces[z] ||
                           symmetryMap[y][currentBoard.pieces[z + 1] - 1] == canonicalBoards->pieces[z + 1])) {
                         isSymmetric = 0;

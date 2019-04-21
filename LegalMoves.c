@@ -16,7 +16,7 @@ void LegalMoves(board currentBoard, board *candidates, int* totalMoves) {
     int c = 0; //count of candidate boards we've made
     int empty = 0; //flag to set if we've found an empty spot
     int handPieceSize;
-    int boardPieceSize;
+    int boardPieceSize, things[200];
 
     board topPieces = TopPieces(currentBoard);
     board temp;
@@ -77,7 +77,6 @@ void LegalMoves(board currentBoard, board *candidates, int* totalMoves) {
         }
 
     }
-
 
     //return the legalMoves array
     *totalMoves = c;

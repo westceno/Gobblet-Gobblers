@@ -10,25 +10,37 @@ int canonicalSize = 0;
 
 int Player_Turn(board currentBoard)
 {
+
     malloc(sizeof(legalMoves) * 2);
 
     board symmetricBoard;
 
-    int totalMoves = 0, xWinnerCounter = 0, oWinnerCounter = 0, cycleCounter = 0;
-    int i, winner;
+    int totalMoves = 0, xWinnerCounter = 0, oWinnerCounter = 0, cycleCounter = 0, currentLocation = 0, currentNextSize = 0;
+    int i, x, winner;
+
+    currentLocation = findBoard(currentBoard, canonicalBoards, canonicalSize);
+
+    for(x = 0; x < 81; x++)
+        canonicalBoards[currentLocation].next[x] = -1;
 
     if(IsWinner(currentBoard) == 'x' && currentBoard.playerTurn == 'x') {
-        canonicalBoards[findBoard(currentBoard, canonicalBoards, canonicalSize)].result = 1;
+
+        canonicalBoards[currentLocation].result = 1;
+
         return 1;
     } else if(IsWinner(currentBoard) == 'o' && currentBoard.playerTurn == 'o') {
-        canonicalBoards[findBoard(currentBoard, canonicalBoards, canonicalSize)].result = 2;
+        canonicalBoards[currentLocation].result = 2;
         return 2;
     }
     LegalMoves(currentBoard, legalMoves, &totalMoves);
 
+
     for( i = 0; i < totalMoves; i++){
+        //printf("total Moves %d\n", totalMoves);
         symmetricBoard = isSymmetric(legalMoves[i], canonicalBoards, canonicalSize);
         if( symmetricBoard.result == -1){
+            canonicalBoards[currentLocation].next[currentNextSize] = canonicalSize;
+            currentNextSize++;
             canonicalBoards[canonicalSize] = legalMoves[i];
             canonicalSize++;
             winner = Player_Turn(legalMoves[i]);
@@ -45,22 +57,23 @@ int Player_Turn(board currentBoard)
             cycleCounter++;
     }
 
+    canonicalBoards[currentLocation].nextSize = currentNextSize;
    //printf("Canonical Size: %d\n", canonicalSize);
    printf("x = %d y = %d\n", xWinnerCounter,oWinnerCounter);
     if(currentBoard.playerTurn == 'x' && xWinnerCounter >= 1) {
-        canonicalBoards[findBoard(currentBoard, canonicalBoards, canonicalSize)].result = 1;
+        canonicalBoards[currentLocation].result = 1;
         return 1;
     } else if(currentBoard.playerTurn == 'x' && totalMoves == oWinnerCounter + cycleCounter) {
-        canonicalBoards[findBoard(currentBoard, canonicalBoards, canonicalSize)].result = 2;
+        canonicalBoards[currentLocation].result = 2;
         return 2;
     } else if(currentBoard.playerTurn == 'o' && oWinnerCounter >= 1) {
-        canonicalBoards[findBoard(currentBoard, canonicalBoards, canonicalSize)].result = 2;
+        canonicalBoards[currentLocation].result = 2;
         return 2;
     } else if(currentBoard.playerTurn == 'o' && totalMoves == xWinnerCounter + cycleCounter) {
-        canonicalBoards[findBoard(currentBoard, canonicalBoards, canonicalSize)].result = 1;
+        canonicalBoards[currentLocation].result = 1;
         return 1;
     } else {
-        canonicalBoards[findBoard(currentBoard, canonicalBoards, canonicalSize)].result = 0;
+        canonicalBoards[currentLocation].result = 0;
         return 0;
     }
 

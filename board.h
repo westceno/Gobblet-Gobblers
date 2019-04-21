@@ -14,6 +14,9 @@ typedef struct board {
     this repeats for medium and large pieces
     */
     int pieces[SIZE];
+    int next[81];
+    int nextSize;
     char playerTurn; //can be x or o
     int result; //win(2), lose(1), tie(0), empty(-1)
+
 } board;
