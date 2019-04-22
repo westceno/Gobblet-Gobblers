@@ -3,18 +3,18 @@
 #include "findBoard.c"
 
 
-board canonicalBoards[2000000];
+board canonicalBoards[200000];
 
 
 int canonicalSize = 0;
-int legalSize = 531441;
+int legalSize = 4000;
 
 int Player_Turn(board currentBoard)
 {
 
     board *legalMoves;
 
-    legalMoves = calloc( legalSize, sizeof(board*));
+    legalMoves = malloc((legalSize)* sizeof(board*));
 
     board symmetricBoard;
 
@@ -65,7 +65,7 @@ int Player_Turn(board currentBoard)
     canonicalBoards[currentLocation].nextSize = currentNextSize;
     free(legalMoves);
    //printf("Canonical Size: %d\n", canonicalSize);
-   printf("x = %d y = %d\n", xWinnerCounter,oWinnerCounter);
+   //printf("x = %d y = %d\n", xWinnerCounter,oWinnerCounter);
     if(currentBoard.playerTurn == 'x' && xWinnerCounter >= 1) {
         canonicalBoards[currentLocation].result = 1;
         return 1;

@@ -23,7 +23,7 @@ void main() {
     printf("Result of currentBoard: %d\n", result);
     printAsAList();
 
-    calloc(sizeof(canonicalBoards), 2);
+    free(canonicalBoards);
 
 
 
