@@ -7,7 +7,7 @@ board canonicalBoards[200000];
 
 
 int canonicalSize = 0;
-int legalSize = 4000;
+int legalSize = 3500;
 
 int Player_Turn(board currentBoard)
 {

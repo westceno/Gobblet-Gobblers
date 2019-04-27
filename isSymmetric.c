@@ -15,40 +15,41 @@ board isSymmetric(board currentBoard, board *canonicalBoards, int canonicalSize)
     int x, y, z, isSymmetric;
     board symmetric;
     symmetric.result = -1;
-    for(x = 0; x < canonicalSize; x++){
-        for(y = 0; y < 8 && canonicalBoards->playerTurn == currentBoard.playerTurn && currentBoard.pieceCount == canonicalBoards->pieceCount; y++) {
+    for(x = 0; x < canonicalSize; x++) {
+        for (y = 0; y < 8 && canonicalBoards->playerTurn == currentBoard.playerTurn &&
+                    currentBoard.pieceCount == canonicalBoards->pieceCount; y++) {
             isSymmetric = 1;
             for (z = 0; z < 12; z += 2) {
                 if (currentBoard.pieces[0] == 2 && currentBoard.pieces[2] == 0)
                     printf("here");
                 //if (currentBoard.pieces[z] > 0 && currentBoard.pieces[z + 1] > 0) {
-                    if (!(symmetryMap[y][currentBoard.pieces[z] - 1] == canonicalBoards->pieces[z] ||
-                          symmetryMap[y][currentBoard.pieces[z] - 1] == canonicalBoards->pieces[z + 1]) &&
-                        !(symmetryMap[y][currentBoard.pieces[z + 1] - 1] == canonicalBoards->pieces[z] ||
-                          symmetryMap[y][currentBoard.pieces[z + 1] - 1] == canonicalBoards->pieces[z + 1])) {
-                        isSymmetric = 0;
-                        break;
-                    }
-                    else //if (currentBoard.pieces[z] == 0 && currentBoard.pieces[z + 1] > 0){
-                    if (!(symmetryMap[y][currentBoard.pieces[z + 1] - 1] == canonicalBoards->pieces[z] ||
-                          symmetryMap[y][currentBoard.pieces[z + 1] - 1] == canonicalBoards->pieces[z + 1])) {
-                        isSymmetric = 0;
-                        break;
+                if (!(symmetryMap[y][currentBoard.pieces[z] - 1] == canonicalBoards->pieces[z] ||
+                      symmetryMap[y][currentBoard.pieces[z] - 1] == canonicalBoards->pieces[z + 1]) &&
+                    !(symmetryMap[y][currentBoard.pieces[z + 1] - 1] == canonicalBoards->pieces[z] ||
+                      symmetryMap[y][currentBoard.pieces[z + 1] - 1] == canonicalBoards->pieces[z + 1])) {
+                    isSymmetric = 0;
+                    break;
+                } //if (currentBoard.pieces[z] == 0 && currentBoard.pieces[z + 1] > 0){
+                /*if (!(symmetryMap[y][currentBoard.pieces[z + 1] - 1] == canonicalBoards->pieces[z] ||
+                      symmetryMap[y][currentBoard.pieces[z + 1] - 1] == canonicalBoards->pieces[z + 1])) {
+                    isSymmetric = 0;
+                    break;
 
-                } else //if (currentBoard.pieces[z] > 0 && currentBoard.pieces[z + 1] == 0) {
+            } else //if (currentBoard.pieces[z] > 0 && currentBoard.pieces[z + 1] == 0) {
 
-                    if( !(symmetryMap[y][currentBoard.pieces[z] - 1] == canonicalBoards->pieces[z] ||
-                           symmetryMap[y][currentBoard.pieces[z] - 1] == canonicalBoards->pieces[z + 1])){
-                        isSymmetric = 0;
-                        break;
-                    }
-
+                if( !(symmetryMap[y][currentBoard.pieces[z] - 1] == canonicalBoards->pieces[z] ||
+                       symmetryMap[y][currentBoard.pieces[z] - 1] == canonicalBoards->pieces[z + 1])){
+                    isSymmetric = 0;
+                    break;
+                }*/
             }
+
                 if (isSymmetric == 1)
                     return *canonicalBoards;
-            }
+
             canonicalBoards++;
 
         }
+    }
     return symmetric;
 }
