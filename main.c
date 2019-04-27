@@ -25,6 +25,6 @@ void main() {
 
     free(canonicalBoards);
 
-
+    return; 0;
 
 }

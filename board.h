@@ -18,5 +18,6 @@ typedef struct board {
     int nextSize;
     char playerTurn; //can be x or o
     int result; //win(2), lose(1), tie(0), empty(-1)
+    int pieceCount;
 
 } board;

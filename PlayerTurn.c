@@ -19,7 +19,7 @@ int Player_Turn(board currentBoard)
     board symmetricBoard;
 
     int totalMoves = 0, xWinnerCounter = 0, oWinnerCounter = 0, cycleCounter = 0, currentLocation = 0, currentNextSize = 0;
-    int i, x, winner;
+    int i, x, winner = 0;
 
     currentLocation = findBoard(currentBoard, canonicalBoards, canonicalSize);
 
@@ -27,7 +27,6 @@ int Player_Turn(board currentBoard)
         canonicalBoards[currentLocation].next[x] = -1;
 
     if(IsWinner(currentBoard) == 'x' && currentBoard.playerTurn == 'x') {
-
         canonicalBoards[currentLocation].result = 1;
 
         return 1;
@@ -44,6 +43,7 @@ int Player_Turn(board currentBoard)
         //printf("total Moves %d\n", totalMoves);
         symmetricBoard = isSymmetric(legalMoves[i], canonicalBoards, canonicalSize);
         if( symmetricBoard.result == -1){
+            legalMoves[i].pieceCount = pieceCounter(legalMoves[i]);
             canonicalBoards[currentLocation].next[currentNextSize] = canonicalSize;
             currentNextSize++;
             canonicalBoards[canonicalSize] = legalMoves[i];
@@ -65,7 +65,7 @@ int Player_Turn(board currentBoard)
     canonicalBoards[currentLocation].nextSize = currentNextSize;
     free(legalMoves);
    //printf("Canonical Size: %d\n", canonicalSize);
-   //printf("x = %d y = %d\n", xWinnerCounter,oWinnerCounter);
+   printf("x = %d y = %d\n", xWinnerCounter,oWinnerCounter);
     if(currentBoard.playerTurn == 'x' && xWinnerCounter >= 1) {
         canonicalBoards[currentLocation].result = 1;
         return 1;
